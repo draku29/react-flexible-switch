@@ -82,7 +82,7 @@ class Switch extends React.Component {
       return
     }
 
-    if (e.target == this.refs.circle || e.target == this.refs.switch) {
+    if (e.target == this.circle || e.target == this.switch) {
       this.setState({ sliding: true })
       disableScroll()
     }
@@ -161,18 +161,18 @@ class Switch extends React.Component {
       <span
         style={this.switchStyles()}
         className={this.classes()}
-        ref="switch"
+        ref={(el)=>this.switch = el}
         onMouseLeave={this.onMouseLeave}
       >
         <Label
           active={this.state.value}
           labels={this.props.labels}
-          ref="label"
+          ref={(el)=>this.label = el}
         />
         <span
           style={this.circleStyles()}
           className="react-flexible-switch-circle"
-          ref="circle"
+          ref={(el)=>this.circle = el}
         />
 
         <button
@@ -180,7 +180,7 @@ class Switch extends React.Component {
           onClick={this.onActivateButton}
           style={hiddenButtonStyles}
           type="button"
-          ref="button"
+          ref={(el)=>this.button = el}
         />
       </span>
     )
